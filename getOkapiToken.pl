@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-$password = "[passwword]"; $username = "[username]";
+$password = '[passwword]'; $username = "[username]";
 $baseURL = "https://okapi-[institution].folio.ebsco.com";
 $jsonHeader = "Content-type: application/json";
 $xOkapiTenant = "[aa01234567]";
