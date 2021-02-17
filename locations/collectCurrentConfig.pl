@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-require 'getOkapiToken.pl';
+require '/opt/uks/getOkapiToken.pl';
 
 use JSON;
 
@@ -65,18 +65,19 @@ for ( @{$hash->{locations}} ) {
 	$code = $_->{'code'};
 	$discoveryDisplayName = $_->{'discoveryDisplayName'};
 	$institutionId = $_->{'institutionId'};
-	$libraryId = $_->{'libraryIId'};
+	$libraryId = $_->{'libraryId'};
 	$loccampsCode = $loccampsCodes{$campusId};
 	$locinstsCode = $locinstsCodes{$institutionId};
-	$loclibsCode = $loclibssCodes{$libraryId};
+	$loclibsCode = $loclibsCodes{$libraryId};
 	$name = $_->{'name'};
 	$primaryServicePoint = $_->{'primaryServicePoint'};
 	$primaryServicePointCode = $servicepointsCodes{$primaryServicePoint};
-	$servicePointIdCodes = "";
+	$servicePointCodes = "";
         $servicePointIds = $_->{'servicePointIds'};
         for ( @{$servicePointIds} ) {
-		$servicePointIdCodes .= $servicepointsCodes{$_} . "|";
+		$servicePointCodes .= $servicepointsCodes{$_} . "|";
 	}
-	print w "$name|$code|$discoveryDisplayName|$loclibsCode|$loccampsCode|$locinstsCode|$primaryServicePointCode|$servicePointIdCodes|\n";
+	$servicePointCodes =~ s/\|$//;
+	print w "$name|$code|$discoveryDisplayName|$loclibsCode|$loccampsCode|$locinstsCode|$primaryServicePointCode|$servicePointCodes|\n";
 }
 close(w);
