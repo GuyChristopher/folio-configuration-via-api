@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-require '/opt/uks/getOkapiToken.pl';
+require 'getOkapiToken.pl';
 
 use JSON;
 
