@@ -10,6 +10,7 @@ $post = `curl -i -s -w '\n' -X POST -H '$jsonHeader' -H 'X-Okapi-Tenant: $xOkapi
 foreach $part (@parts) {
  if ($part =~ /^x-okapi-token:/) {
   $xOkapiToken = "X-Okapi-Token: " . substr($part,15);
+  $xOkapiToken =~ s/^M//g; $note2self = "*** that looks like ^M but it is not - if is Ctrl+V Ctrl+M ***";
  }
 }
 
